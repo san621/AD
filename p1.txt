@@ -1,0 +1,193 @@
+<HEAD>
+
+<style type="text/css">
+<!--
+.bgclr {background-color: white; color: black; font-weight: bold;}
+-->
+
+	.hidden {
+		display: none;
+	}
+	
+	.visible {
+		display: block;
+	}
+	
+</style>
+
+<script language="JavaScript">
+
+
+// Insert scooter questions number of questions
+var numQues = 10;
+
+// Insert number of choices in each question
+var numChoi = 4;
+
+// Insert number of questions displayed in answer area
+var answers = new Array(10);
+
+// Insert answers to questions
+answers[0] = "None of the mentioned";
+answers[1] = "in";
+answers[2] = "(1,2,3)";
+answers[3] = "4";
+answers[4] = "error";
+answers[5] = "0xa5";
+answers[6]= "3.2e-12";
+answers[7]= "foo'bar";
+answers[8]= "foo\\bar\nbaz";
+answers[9]="diff()";
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+		break;
+        }
+      }
+    }
+  }
+  score = Math.round(score/(numQues-1)*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=0; i<numQues; i++) {
+    correctAnswers += i+1 + ". " + answers[i] + "\r\n";
+  }
+  
+  form.solutions.value = correctAnswers;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	var q1Inputs = document.querySelector('.q1-inputs');
+	q1Inputs.addEventListener('change', function(event) {
+		if (event.target.value !== 'Keep to the left side of the road far as is safe.') {
+			q1Inputs.lastElementChild.classList.remove('hidden');
+		} else {
+			q1Inputs.lastElementChild.classList.add('hidden');
+		}
+	});
+});
+
+//  End -->
+</script>
+
+</HEAD>
+
+<!-- STEP TWO: Copy this code into the BODY of your HTML document  -->
+
+<BODY>
+
+<h3>Python Quiz</h3>
+
+<form name="quiz">
+
+
+
+11.  "All keywords in Python are in _________",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q12" value="lower case"> lower case</li>
+  <li><input type="radio" name="q12" value="UPPER CASE">UPPER CASE</li>
+  <li><input type="radio" name="q12" value="Capitalized">Capitalized</li>
+  <li><input type="radio" name="q12" value= "None of the mentioned">None of the mentioned</li>
+</ul>
+
+
+12.  "Which of the following cannot be a variable?",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q12" value= "__init__"> __init__</li>
+  <li><input type="radio" name="q12" value="in">in</li>
+  <li><input type="radio" name="q12" value="it">it</li>
+  <li><input type="radio" name="q12" value= "on">on</li>
+</ul>
+
+
+
+13.  "Which of the following is a Python tuple?",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q13" value= "[1, 2, 3]"> [1, 2, 3]</li>
+  <li><input type="radio" name="q13" value="(1, 2, 3)">(1, 2, 3)</li>
+  <li><input type="radio" name="q13" value="{1, 2, 3}">{1, 2, 3}</li>
+  <li><input type="radio" name="q13" value= "{}">{}</li>
+</ul>
+
+
+
+14.  "What is returned by math.ceil(3.4)?",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q14" value= "3"> 3</li>
+  <li><input type="radio" name="q14" value="4">4</li>
+  <li><input type="radio" name="q14" value="4.0">4.0</li>
+  <li><input type="radio" name="q14" value= "3.0">3.0</li>
+</ul>
+
+
+
+15.  "What will be the output of print(math.factorial(4.5))?",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q15" value= "24"> 24</li>
+  <li><input type="radio" name="q15" value="120">120</li>
+  <li><input type="radio" name="q15" value="error">error</li>
+  <li><input type="radio" name="q15" value= "24.0">24.0</li>
+</ul>
+
+
+16.  "How would you express the hexadecimal value a5 as a base-16 integer constant in Python?",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q16" value= "0xa5"> 0xa5</li>
+  <li><input type="radio" name="q16" value="23">23</li>
+  <li><input type="radio" name="q16" value="16">16</li>
+  <li><input type="radio" name="q16" value= "24.0">24.0</li>
+</ul>
+
+
+
+17.  "How would you express the constant floating-point value 3.2 × 10^-12 in Python:",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q17" value= "3.2e-12"> 3.2e-12</li>
+  <li><input type="radio" name="q17" value="25">25</li>
+  <li><input type="radio" name="q17" value="Error">Error</li>
+  <li><input type="radio" name="q17" value= "2.4e- 10">2.4e-10</li>
+</ul>
+
+
+18.  "Which of the following are valid ways to specify the string literal foo'bar in Python:",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q18" value= "foo'bar"> "foo'bar"</li>
+  <li><input type="radio" name="q18" value="""foo'bar""">"""foo'bar"""</li>
+  <li><input type="radio" name="q18" value="foo''bar">foo''bar</li>
+  <li><input type="radio" name="q18" value= "foo\'bar">foo\'bar</li>
+</ul>
+
+
+19.  "Which of the following is the correct REPL output of print(r'foo\\bar\nbaz')?",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q19" value= "foo\\barnbaz"> foo\\barnbaz</li>
+  <li><input type="radio" name="q19" value="foo\\bar\nbaz">foo\\bar\nbaz</li>
+  <li><input type="radio" name="q19" value="foo\barbaz">foo\barbaz</li>
+  <li><input type="radio" name="q19" value= "foo\bar\nbaz">foo\bar\nbaz</li>
+</ul>
+
+20.  "Which of the following is not a Python built-in function:",
+<ul class="q1-inputs" style="margin-top: 1pt">
+  <li><input type="radio" name="q20" value= "diff()"> diff()</li>
+  <li><input type="radio" name="q20" value="isinstance()">isinstance()</li>
+  <li><input type="radio" name="q20" value="round()">round()</li>
+  <li><input type="radio" name="q20" value= "repr()">repr()</li>
+</ul>
+
+
+<input type="button" value="Get score" onClick="getScore(this.form)">
+<input type="reset" value="Clear answers">
+<p> Score = <strong><input class="bgclr" type="text" size="5" name="percentage" disabled></strong><br><br>
+Correct answers:<br>
+<textarea class="bgclr" name="solutions" wrap="virtual" rows="10" cols="100" disabled>
+</textarea>
+</form>
